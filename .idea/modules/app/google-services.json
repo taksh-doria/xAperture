@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "801890705241",
+    "firebase_url": "https://xapertureapp.firebaseio.com",
+    "project_id": "xapertureapp",
+    "storage_bucket": "xapertureapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801890705241:android:29277d91a284c69928b648",
+        "android_client_info": {
+          "package_name": "com.example.xaperture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801890705241-3tq0vko0d0ioc3g1trm1kpf84i2b8arf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.xaperture",
+            "certificate_hash": "8168e20ef3d520e0c8bd8563c61ef53db07b35f6"
+          }
+        },
+        {
+          "client_id": "801890705241-9e861der4gii8lte71kqa8cf260iqnil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0MC9cNh66hmCgNPzWFmm4cr4_1R6dkyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801890705241-9e861der4gii8lte71kqa8cf260iqnil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
