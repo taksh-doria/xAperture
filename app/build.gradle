@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+dependencies {
+    // add the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    // add SDKs for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -13,7 +19,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         multiDexEnabled = "true"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

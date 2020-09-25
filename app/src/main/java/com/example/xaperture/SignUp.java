@@ -1,12 +1,15 @@
 package com.example.xaperture;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -19,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -26,6 +30,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+
 
 public class SignUp extends About {
 
@@ -37,6 +43,7 @@ public class SignUp extends About {
     // Configure Google Sign In
 
     private  static  final int RC_SIGN_IN = 1;
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MobileAds.initialize(SignUp.this, new OnInitializationCompleteListener() {
@@ -81,16 +88,35 @@ public class SignUp extends About {
     {
         Intent intent=mGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent,code);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("inside on activity result: "+requestCode);
         if(requestCode==code)
         {
+            if (data!=null)
+            {
+                System.out.print("not null");
+            }
             Task<GoogleSignInAccount> task= GoogleSignIn.getSignedInAccountFromIntent(data);
-            GoogleSignInAccount account=task.getResult();
-            firebaseAuthWithGoogle(account);
+            try{
+
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // [START_EXCLUDE]
+                Toast.makeText(this, "Gooogle Auth failed", Toast.LENGTH_LONG);
+                // [END_EXCLUDE]
+            }
+
+            //GoogleSignInAccount account=task.getResult();
+            //firebaseAuthWithGoogle(account);
         }
         else {
             Toast.makeText(getApplicationContext(),"Error occured please try again",Toast.LENGTH_SHORT).show();
