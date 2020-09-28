@@ -1,5 +1,5 @@
 # xAperture
-# Android Application
+# Stock Photography sharing platform 
 # Download link :https://xaperture.en.aptoide.com/app
 
 
