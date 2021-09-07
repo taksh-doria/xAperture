@@ -1,6 +1,6 @@
 # xAperture
 # Stock Photography sharing platform 
-# Download link :https://xaperture.en.aptoide.com/app
+
 
 
 xAperture is a  Stock Photography sharing platform app powered by google cloudbased firebase platform.
